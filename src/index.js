@@ -18,7 +18,9 @@ const calculateColor = async value => {
 	let co2Scale = [0, 150, 600, 750, 800]
 	let colors = ['#2AA364', '#F5EB4D', '#9E4229', '#381D02', '#381D02']
 
-	let closestNum = co2Scale.sort((a, b) => Math.abs(a - value) - Math.abs(b - value))[0]
+	let closestNum = co2Scale.sort(
+		(a, b) => Math.abs(a - value) - Math.abs(b - value)
+	)[0]
 
 	console.log(value + ' is closest to ' + closestNum)
 
@@ -80,6 +82,12 @@ const setUpUser = async (apiKey, regionName) => {
 	clearBtn.style.display = 'block'
 	//make initial call
 	displayCarbonUsage(apiKey, regionName)
+}
+
+// handle form submission
+const handleSubmit = async e => {
+	e.preventDefault()
+	setUpUser(apiKey.value, region.value)
 }
 
 //initial checks
