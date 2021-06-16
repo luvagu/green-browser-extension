@@ -6,8 +6,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
 //borrowed from energy lollipop extension, nice feature!
 function drawIcon(value) {
-	var canvas = document.createElement('canvas')
-	var context = canvas.getContext('2d')
+	const canvas = document.createElement('canvas')
+	const context = canvas.getContext('2d')
 
 	context.beginPath()
 	context.fillStyle = value.color
