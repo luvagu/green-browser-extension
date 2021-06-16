@@ -126,3 +126,9 @@ const reset = async e => {
 	localStorage.removeItem('regionName')
 	init()
 }
+
+form.addEventListener('submit', e => handleSubmit(e))
+clearBtn.addEventListener('click', e => reset(e))
+
+//start app
+init()
