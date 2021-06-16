@@ -119,3 +119,10 @@ const init = async () => {
 		clearBtn.style.display = 'block'
 	}
 }
+
+const reset = async e => {
+	e.preventDefault()
+	//clear local storage for region only
+	localStorage.removeItem('regionName')
+	init()
+}
