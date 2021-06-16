@@ -14,6 +14,17 @@ const fossilfuel = document.querySelector('.fossil-fuel')
 const myregion = document.querySelector('.my-region')
 const clearBtn = document.querySelector('.clear-btn')
 
+// set up api key and region
+const setUpUser = async (apiKey, regionName) => {
+	localStorage.setItem('apiKey', apiKey)
+	localStorage.setItem('regionName', regionName)
+	loading.style.display = 'block'
+	errors.textContent = ''
+	clearBtn.style.display = 'block'
+	//make initial call
+	displayCarbonUsage(apiKey, regionName)
+}
+
 //initial checks
 const init = async () => {
 	//if anything is in localStorage, pick it up
