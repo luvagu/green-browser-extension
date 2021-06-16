@@ -41,6 +41,7 @@ const displayCarbonUsage = async (apiKey, region) => {
 		await axios
 			.get('https://api.co2signal.com/v1/latest', {
 				params: {
+					// region code can be fount at: https://api.electricitymap.org/v3/zones
 					countryCode: region,
 				},
 				headers: {
