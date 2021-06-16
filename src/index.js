@@ -14,3 +14,32 @@ const fossilfuel = document.querySelector('.fossil-fuel')
 const myregion = document.querySelector('.my-region')
 const clearBtn = document.querySelector('.clear-btn')
 
+//initial checks
+const init = async () => {
+	//if anything is in localStorage, pick it up
+	const storedApiKey = localStorage.getItem('apiKey')
+	const storedRegion = localStorage.getItem('regionName')
+
+	//set icon to be generic green
+	chrome.runtime.sendMessage({
+		action: 'updateIcon',
+		value: {
+			color: 'green',
+		},
+	})
+
+	if (storedApiKey === null || storedRegion === null) {
+		//if we don't have the keys, show the form
+		form.style.display = 'block'
+		results.style.display = 'none'
+		loading.style.display = 'none'
+		clearBtn.style.display = 'none'
+		errors.textContent = ''
+	} else {
+		//if we have saved keys/regions in localStorage, show results when they load
+		results.style.display = 'none'
+		form.style.display = 'none'
+		displayCarbonUsage(storedApiKey, storedRegion)
+		clearBtn.style.display = 'block'
+	}
+}
